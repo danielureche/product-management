@@ -1,0 +1,48 @@
+<div class="min-h-screen bg-slate-100 px-8 py-6 text-slate-800">
+  <!-- Header -->
+  <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight">
+        Product Manager
+      </h1>
+      <p class="mt-1 text-sm text-slate-500">
+        Manage your products, prices and availability
+      </p>
+    </div>
+
+    <button
+      (click)="openForm()"
+      class="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5
+             text-sm font-semibold text-white hover:bg-blue-700 transition"
+    >
+      New Product
+    </button>
+  </div>
+
+  <!-- Table -->
+  <app-product-table
+    [products]="products"
+    (edit)="openForm($event)"
+    (delete)="openDeleteModal($event)"
+    (toggle)="toggle($event)"
+  />
+
+  <!-- Modals -->
+  @if (showFormModal) {
+    <app-product-form
+      [product]="selectedProduct"
+      (onClose)="closeForm($event)"
+    />
+  }
+
+  @if (showDeleteModal) {
+    <app-confirm-modal
+      title="Delete product"
+      message="This action cannot be undone."
+      confirmText="Delete"
+      cancelText="Cancel"
+      (confirm)="confirmDelete()"
+      (cancel)="closeDeleteModal()"
+    />
+  }
+</div>
