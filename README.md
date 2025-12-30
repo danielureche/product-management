@@ -58,7 +58,7 @@ product-manager/
 - **Hibernate / JPA**
 - **Lombok**
 - **Maven**
-- **Base de datos**: H2 / PostgreSQL / MySQL
+- **Base de datos**: H2
 
 ### Frontend
 - **Angular 18**
